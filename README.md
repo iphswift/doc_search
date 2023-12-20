@@ -60,3 +60,6 @@ python3 doc_search_script.py
 
 - The script displays the top 5 documents with the highest similarity to the entered search string.
 - Type `more` to view the next set of results or any other key to return to the search.
+
+### Disclaimer
+This project was coded using ChatGPT as a collaborative tool.

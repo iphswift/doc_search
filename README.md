@@ -53,7 +53,7 @@ python3 doc_search_script.py
 
 - The script will prompt you to enter a search string or a command.
 - You can type a sentence or phrase to search across the documents.
-- Type `!load` to reload and reprocess the files as per the `.doc_search_config`.
+- Type `!load` to load or reload and reprocess the files as per the `.doc_search_config`.
 - Type `exit` to quit the script.
 
 ## Output

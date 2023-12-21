@@ -45,10 +45,13 @@ def process_and_cache_files(file_paths):
     """Process files, compute embeddings, and cache them."""
     cache = {}
     for file_path in file_paths:
-        text = read_text_from_file(file_path)
-        document_parts = text.split('\n')
-        embeddings = [get_embedding(part).tolist() for part in document_parts]  # Convert numpy arrays to lists
-        cache[file_path] = embeddings
+        try:
+            text = read_text_from_file(file_path)
+            document_parts = text.split('\n')
+            embeddings = [get_embedding(part).tolist() for part in document_parts]  # Convert numpy arrays to lists
+            cache[file_path] = embeddings
+        except Exception as e:
+            print(f"Error processing file '{file_path}': {e}")
 
     with open(CACHE_FILE_PATH, 'w') as file:
         json.dump(cache, file)

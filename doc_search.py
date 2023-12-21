@@ -107,9 +107,15 @@ def main():
 
         if command == '!load':
             file_paths = get_file_paths_from_config()
-            process_and_cache_files(file_paths)
-            cache = load_cache()
-            print("Files reloaded and embeddings recomputed.")
+            
+            # Confirmation message
+            confirm = input(f"You are about to load {len(file_paths)} documents. Do you want to proceed? (y/n): ").strip().lower()
+            if confirm == 'y':
+                process_and_cache_files(file_paths)
+                cache = load_cache()
+                print("Files reloaded and embeddings recomputed.")
+            else:
+                print("Loading cancelled.")
             continue
 
         file_paths = get_file_paths_from_config()

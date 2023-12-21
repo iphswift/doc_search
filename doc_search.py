@@ -118,6 +118,10 @@ def main():
                 print("Loading cancelled.")
             continue
 
+        if not cache:
+            print("No embeddings found. Please enter '!load' to load the most recent file structure.")
+            continue
+
         file_paths = get_file_paths_from_config()
         similarities = calculate_max_similarity(command, file_paths, cache)
         start_index = 0

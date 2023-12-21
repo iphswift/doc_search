@@ -19,9 +19,18 @@ def get_embedding(text):
     return embedding.flatten()
 
 def read_text_from_file(file_name):
-    """Read text from a file."""
-    with open(file_name, 'r', encoding='utf-8') as file:
-        text = file.read()
+    """Read text from a file with different encoding strategies."""
+    try:
+        with open(file_name, 'r', encoding='utf-8') as file:
+            text = file.read()
+    except UnicodeDecodeError:
+        try:
+            with open(file_name, 'r', encoding='ISO-8859-1') as file:
+                text = file.read()
+        except UnicodeDecodeError:
+            with open(file_name, 'r', encoding='utf-8', errors='ignore') as file:
+                text = file.read()
+                print(f"Warning: Ignored some characters in file {file_name} that could not be decoded.")
     return text
 
 def get_file_paths_from_config():
